@@ -2,6 +2,8 @@
 const path = require('path');
 const { app, BrowserWindow } = require('electron');
 const isDev = process.env.IS_DEV == "true" ? true : false;
+const { ipcMain, session } = require('electron')
+const os = require('os')
 
 function createWindow() {
     // Create the browser window.
@@ -9,8 +11,9 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.ts'),
+            sandbox: false,
             nodeIntegration: false,
+            preload: path.join(__dirname, 'preload.ts'),
         },
     });
 
@@ -24,13 +27,29 @@ function createWindow() {
     // Open the DevTools.
     if (isDev) {
         mainWindow.webContents.openDevTools();
+
     }
+
+
+    // Main process
+    ipcMain.handle('sample-handle', async (event, someArgument) => {
+        const result = "This is the return result";
+        return result
+    })
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
+    if (isDev) {// on macOS
+        const reactDevToolsPath = path.join(
+            os.homedir(),
+            '/AppData/local/Google/Chrome/User Data/Default/Extensions/ljjemllljcmogpfapbkkighbhhppjdbg/6.0.0.21_0'
+        )
+        // C:\Users\Admin\AppData\Local\Google\Chrome\User Data\Default\Extensions\ljjemllljcmogpfapbkkighbhhppjdbg
+        await session.defaultSession.loadExtension(reactDevToolsPath)
+    }
     createWindow()
     app.on('activate', function () {
         // On macOS it's common to re-create a window in the app when the
