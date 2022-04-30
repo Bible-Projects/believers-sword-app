@@ -1,1 +1,0 @@
-export const localStorageThemeKey = "believers-sword-ui-theme";
