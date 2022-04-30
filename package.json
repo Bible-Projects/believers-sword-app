@@ -3,7 +3,7 @@
     "author": "BroJenuel",
     "private": true,
     "version": "1.0.0",
-    "main": "electron/electron.js",
+    "main": "electron/electron.ts",
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build",
@@ -28,8 +28,10 @@
         "electron-builder": "^23.0.3",
         "typescript": "^4.5.4",
         "vite": "^2.9.5",
+        "vite-plugin-windicss": "^1.8.4",
         "vue-tsc": "^0.34.7",
-        "wait-on": "^6.0.1"
+        "wait-on": "^6.0.1",
+        "windicss": "^3.5.1"
     },
     "build": {
         "appId": "com.believers-sword.app",

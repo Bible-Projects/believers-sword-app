@@ -1,7 +1,6 @@
 // electron/electron.js
 const path = require('path');
 const { app, BrowserWindow } = require('electron');
-
 const isDev = process.env.IS_DEV == "true" ? true : false;
 
 function createWindow() {
@@ -10,8 +9,8 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
-            nodeIntegration: true,
+            preload: path.join(__dirname, 'preload.ts'),
+            nodeIntegration: false,
         },
     });
 
