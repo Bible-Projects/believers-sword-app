@@ -6,6 +6,7 @@ const { ipcMain, session } = require('electron')
 const os = require('os')
 
 function createWindow() {
+
     // Create the browser window.
     const mainWindow = new BrowserWindow({
         width: 800,
@@ -24,12 +25,9 @@ function createWindow() {
             ? 'http://localhost:3000'
             : `file://${path.join(__dirname, '../dist/index.html')}`
     );
-    // Open the DevTools.
-    if (isDev) {
-        mainWindow.webContents.openDevTools();
 
-    }
-
+    // Open the DevTools in development mode
+    if (isDev) mainWindow.webContents.openDevTools();
 
     // Main process
     ipcMain.handle('sample-handle', async (event, someArgument) => {

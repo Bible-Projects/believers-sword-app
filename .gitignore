@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 dist_electron
 release.bat
+
+electron/db_dev/bible-sqlite.db
+electron/db_dev/store.db

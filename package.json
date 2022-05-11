@@ -46,7 +46,12 @@
         },
         "files": [
             "dist/**/*",
-            "electron/**/*"
+            "electron/Helper/**/*",
+            "electron/Service/**/*",
+            "electron/apiFunctions.ts",
+            "electron/electron.ts",
+            "electron/preload.ts",
+            "electron/db/**/*"
         ],
         "directories": {
             "buildResources": "assets",
