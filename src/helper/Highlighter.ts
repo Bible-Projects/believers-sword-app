@@ -2,7 +2,7 @@
  * Highlight keywords inside a DOM element
  * @param {string} elem Element to search for keywords in
  * @param {string[]} keywords Keywords to highlight
- * @param {boolean} caseSensitive Differenciate between capital and lowercase letters
+ * @param {boolean} caseSensitive Differentiate between capital and lowercase letters
  * @param {string} cls Class to apply to the highlighted keyword
  */
 export function highlight(elem: any, keywords: any, caseSensitive = false, cls = "highlight") {
